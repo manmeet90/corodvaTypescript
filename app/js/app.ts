@@ -24,5 +24,19 @@ import {_shim} from './shims';
             console.log('device ready fired!');
             var fn = Handlebars.compile(tmpl);
             _shim.$('#main').html(fn({device:device}));
+            var db = window.sqlitePlugin.openDatabase({name: "phonebook.db", createFromLocation: 1});
+            console.log(db);
+            db.transaction(function(tx) {
+                db.executeSql("pragma table_info (tblphonebook);", [], function(res) {
+                    console.log("PRAGMA res: " + JSON.stringify(res));
+                });
+
+                db.executeSql("select * from tblphonebook;", [], function (_db, res) {
+                    console.log(_db);
+                    console.log(res);
+                }, function (err) {
+                    console.log(err);
+                });
+            });
         }
     }
