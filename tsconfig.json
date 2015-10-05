@@ -1,0 +1,14 @@
+{
+        "compilerOptions": {
+                "module": "amd",
+                "noImplicitAny": false,
+                "removeComments": true,
+                "preserveConstEnums": true,
+                "target":"es5",
+                "sourceMap": false,
+                "outDir":"./www/js"
+        },
+        "exclude": [
+                "node_modules"
+        ]
+}
