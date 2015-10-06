@@ -5,7 +5,8 @@ require.config({
         "text" : "../libs/requirejs/text",
         "jquery" : "../libs/jquery/jquery.min",
         "underscore" : "../libs/underscorejs/underscore-min",
-        "handlebars": "../libs/handlebars/handlebars.min"
+        "handlebars": "../libs/handlebars/handlebars.min",
+        "path":"../libs/path/path"
     },
     shim:{
         "jquery":{
@@ -16,6 +17,9 @@ require.config({
         },
         "handlebars":{
             exports:"Handlebars"
+        },
+        'path': {
+            exports: 'Path'
         }
     }
 });

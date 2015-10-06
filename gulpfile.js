@@ -35,10 +35,19 @@ gulp.task("tscompile", function(){
 
 gulp.task('copy:bootstrap', function(){
    gulp.src(['./app/libs/bootstrap/dist/fonts/*'])
-       .pipe(gulp.dest('./www/fonts'));
+       .pipe(gulp.dest('./www/font'));
    gulp.src('./app/libs/bootstrap/dist/js/bootstrap.min.js')
        .pipe(gulp.dest('./www/libs/bootstrap'));
     return gulp.src(['./app/libs/bootstrap/dist/css/bootstrap.min.css'])
+        .pipe(gulp.dest('./www/css'));
+});
+
+gulp.task('copy:materialcss', function(){
+    gulp.src(['./app/libs/material/font/*'])
+        .pipe(gulp.dest('./www/font'));
+    gulp.src('./app/libs/material/materialize.min.js')
+        .pipe(gulp.dest('./www/libs/material'));
+    return gulp.src(['./app/libs/material/materialize.min.css'])
         .pipe(gulp.dest('./www/css'));
 });
 
@@ -49,6 +58,10 @@ gulp.task('copy:extLibs', function(){
         .pipe(gulp.dest('./www/libs/jquery'));
     gulp.src(['./app/libs/requirejs/require.js','./app/libs/requirejs/text.js'])
         .pipe(gulp.dest('./www/libs/requirejs'));
+    gulp.src(['./app/libs/path/path.js'])
+        .pipe(gulp.dest('./www/libs/path'));
+    gulp.src(['./app/libs/pubsub/pubsub.js'])
+        .pipe(gulp.dest('./www/libs/pubsub'));
     return gulp.src(['./app/libs/underscorejs/underscore-min.js'])
         .pipe(gulp.dest('./www/libs/underscorejs'));
 });
@@ -86,5 +99,5 @@ gulp.task('cleanbuild', function(){
 
 
 // default task
-gulp.task('default', ['copy:extLibs','copy:bootstrap', 'copy:assets', 'cleanbuild', 'tscompile', 'watch:tsfiles','watch:assets']);
+gulp.task('default', ['copy:extLibs','copy:materialcss', 'copy:assets', 'cleanbuild', 'tscompile', 'watch:tsfiles','watch:assets']);
 gulp.task('copy:assets', ['copy:index','copy:css','copy:views']);

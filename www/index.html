@@ -33,14 +33,19 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="../www/css/style.css">
+        <!--<link rel="stylesheet" type="text/css" href="../www/css/bootstrap.min.css"/>-->
+        <link rel="stylesheet" href="../www/css/materialize.min.css">
         <title>Hello World</title>
     </head>
     <body>
         <div class="container">
-            <h4>Cordova Typescript App</h4>
+            <h5>Cordova Typescript App</h5>
             <div class="row" id="main"></div>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="./libs/jquery/jquery.min.js"></script>
+        <!--<script type="text/javascript" src="./libs/bootstrap/bootstrap.min.js"></script>-->
+        <script src="./libs/material/materialize.min.js"></script>
         <script>
             var require = {
                 deps:['./js/config.js']

@@ -1,10 +1,4 @@
-/**
- * Created by mipl-80 on 10/1/2015.
- */
-
-import Handlebars from 'handlebars';
-import * as tmpl from 'text!../views/app.html';
-import {_shim} from './shims';
+import {Router} from "router";
 
     export class MyApp{
 
@@ -14,29 +8,26 @@ import {_shim} from './shims';
 
         init(){
             this.bindEvents();
+            this.loadDB();
         }
 
         bindEvents(){
+            var router = new Router();
             document.addEventListener('deviceready', this.onDeviceReady);
         }
 
         onDeviceReady(){
             console.log('device ready fired!');
-            var fn = Handlebars.compile(tmpl);
-            _shim.$('#main').html(fn({device:device}));
-            var db = window.sqlitePlugin.openDatabase({name: "phonebook.db", createFromLocation: 1});
-            console.log(db);
-            db.transaction(function(tx) {
-                db.executeSql("pragma table_info (tblphonebook);", [], function(res) {
-                    console.log("PRAGMA res: " + JSON.stringify(res));
-                });
 
-                db.executeSql("select * from tblphonebook;", [], function (_db, res) {
-                    console.log(_db);
-                    console.log(res);
-                }, function (err) {
-                    console.log(err);
-                });
+            location.href="#/home";
+
+        }
+
+        loadDB(){
+            var db = window.sqlitePlugin.openDatabase({name: "phonebook.db"});
+            db.transaction(function(tx) {
+                //tx.executeSql('drop table if exists tblphonebook;');
+                tx.executeSql('CREATE TABLE IF NOT EXISTS tblphonebook (id integer primary key, fname text, lname text, email text, mobile integer)');
             });
         }
     }

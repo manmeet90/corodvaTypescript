@@ -1,0 +1,17 @@
+<div class="col-sm-12">
+    <h6>Contacts List</h6>
+    <ul class="list-group collection">
+        {{#each contacts}}
+        <li class="list-group-item collection-item">
+            <p>First Name: {{fname}}</p>
+            <p>Last Name: {{lname}}</p>
+            <p>Email ID: {{email}}</p>
+            <p>Mobile: {{mobile}}</p>
+            <p>
+                <a href="#/editcontact/{{id}}" class="blue-text text-darken-2">Edit</a>&nbsp;&nbsp;
+                <button data-rowId="{{id}}" class="waves-effect waves-light delBtn btn red darken-1">Delete</button>
+            </p>
+        </li>
+        {{/each}}
+    </ul>
+</div>
